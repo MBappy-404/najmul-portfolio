@@ -193,8 +193,8 @@ export default function Philosophy() {
         >
           <div className="inline-flex items-center gap-4">
             <div className="w-12 h-[1px] bg-border" />
-            <p className="text-sm text-foreground/40 font-medium italic">
-              &ldquo;আর পিছনে তাকাবো না&rdquo; 💫
+            <p className="text-xl sm:text-2xl md:text-3xl text-foreground/60 font-black italic tracking-tighter leading-none">
+              &ldquo;Don&apos;t look back—you aren&apos;t going that way anymore.&rdquo; 💫
             </p>
             <div className="w-12 h-[1px] bg-border" />
           </div>

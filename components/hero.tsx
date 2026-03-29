@@ -24,7 +24,6 @@ export default function PremiumHero({ isTraveling = false }: { isTraveling?: boo
   // 2. Subtle, calculated Parallax Movements
   const imageY = useTransform(smoothProgress, [0, 1], ["0%", "15%"]);
   const textY = useTransform(smoothProgress, [0, 1], ["0%", "-10%"]);
-  const opacity = useTransform(smoothProgress, [0, 0.8], [1, 0]);
 
   // Premium Easing Curve (Cinematic feel)
   const customEase = [0.76, 0, 0.24, 1] as any;
@@ -39,7 +38,7 @@ export default function PremiumHero({ isTraveling = false }: { isTraveling?: boo
 
         {/* === Text Content - Left Side === */}
         <motion.div
-          style={{ y: textY, opacity }}
+          style={{ y: textY }}
           className="md:col-span-7 z-10 flex flex-col justify-center py-8 md:py-0"
         >
           {/* Overline Text Reveal */}
@@ -73,7 +72,7 @@ export default function PremiumHero({ isTraveling = false }: { isTraveling?: boo
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 1, delay: 0.4, ease: customEase }}
-                className="hidden md:block w-24 h-[2px] bg-black origin-left"
+                className="hidden md:block w-24 h-[2px] bg-accent origin-left"
               />
               <motion.span
                 initial={{ y: "100%" }}
@@ -126,10 +125,10 @@ export default function PremiumHero({ isTraveling = false }: { isTraveling?: boo
               className="flex items-center gap-4 sm:gap-6"
             >
               <a
-                href="#collection"
+                href="#about"
                 className="group flex items-center gap-3 sm:gap-4 text-[10px] sm:text-xs font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase"
               >
-                View Collection
+                Know More
                 <span className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all duration-500 ease-out">
                   <MoveRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 -rotate-45 group-hover:rotate-0 transition-transform duration-500" />
                 </span>
@@ -147,12 +146,12 @@ export default function PremiumHero({ isTraveling = false }: { isTraveling?: boo
           </div>
 
           {/* Mobile: Decorative accent line */}
-          <motion.div
+          {/* <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 1.5, delay: 0.8, ease: customEase }}
             className="md:hidden mt-10 w-16 h-[2px] bg-accent/40 origin-left"
-          />
+          /> */}
         </motion.div>
 
         {/* === Image Container — Only when NOT traveling (Desktop fallback) === */}

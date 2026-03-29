@@ -25,10 +25,10 @@ export default function Footer() {
     {
       title: 'Social',
       links: [
-        { label: 'LinkedIn', href: '#', isNav: false },
-        { label: 'Instagram', href: '#', isNav: false },
-        { label: 'GitHub', href: '#', isNav: false },
-        { label: 'Dribbble', href: '#', isNav: false },
+        { label: 'Facebook', href: 'https://www.facebook.com/Najmul.Here.7', isNav: false },
+        { label: 'Instagram', href: 'https://www.instagram.com/najmul_did/', isNav: false },
+        { label: 'Threads', href: 'https://www.threads.net/@najmul_did', isNav: false },
+        { label: 'LinkedIn', href: 'https://linkedin.com/in/najmuldid', isNav: false },
       ],
     },
     {
@@ -101,29 +101,27 @@ export default function Footer() {
         <div className="py-8 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-white/5">
           <div className="space-y-2 text-center md:text-left">
             <p className="text-sm font-medium opacity-50 tracking-wide">
-              &copy; {currentYear} Najmul Hossain. Enjoy the little things ❤️
+              &copy; {currentYear} Najmul Hossain. All rights reserved.
             </p>
 
           </div>
 
           <div className="flex gap-8 text-xs font-bold uppercase tracking-widest opacity-50">
             <a href="#" className="hover:opacity-100 hover:text-accent transition-all cursor-pointer">
-              Privacy
+              Enjoy the little things ❤️
             </a>
-            <a href="#" className="hover:opacity-100 hover:text-accent transition-all cursor-pointer">
-              Terms
-            </a>
+
           </div>
         </div>
 
-        <p className="text-xs text-center font-semibold pb-2 uppercase tracking-[0.2em] opacity-70">
+        {/* <p className="text-xs text-center font-semibold pb-2 uppercase tracking-[0.2em] opacity-70">
           Developed by <a
             href="https://dev-bappy.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-accent underline transition-all underline decoration-accent/30 underline-offset-4"
           >Bappy</a>
-        </p>
+        </p> */}
       </div>
     </footer>
   );

@@ -30,7 +30,7 @@ export default function Portfolio() {
       title: 'Fashion Line Collection',
       category: 'fashion',
       description: 'A complete fashion collection concept featuring modern sustainable fabrics and innovative designs.',
-      image: '🎨',
+      image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800&auto=format&fit=crop',
       tags: ['Design', 'Fashion', 'Concept'],
       link: '#',
     },
@@ -39,7 +39,7 @@ export default function Portfolio() {
       title: 'Digital Portfolio Website',
       category: 'digital',
       description: 'Personal branding and portfolio website showcasing creative work with modern UI/UX design.',
-      image: '💻',
+      image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&auto=format&fit=crop',
       tags: ['Web Design', 'UI/UX', 'Branding'],
       link: '#',
     },
@@ -48,7 +48,7 @@ export default function Portfolio() {
       title: 'Textile Pattern Design',
       category: 'fashion',
       description: 'Original textile patterns inspired by traditional art with contemporary aesthetic appeal.',
-      image: '🧵',
+      image: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop',
       tags: ['Textile', 'Pattern', 'Design'],
       link: '#',
     },
@@ -57,7 +57,7 @@ export default function Portfolio() {
       title: 'Brand Identity System',
       category: 'digital',
       description: 'Complete branding solution including logo, colors, typography, and visual guidelines.',
-      image: '🎭',
+      image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800&auto=format&fit=crop',
       tags: ['Branding', 'Identity', 'Design System'],
       link: '#',
     },
@@ -66,7 +66,7 @@ export default function Portfolio() {
       title: 'Fashion Photography Direction',
       category: 'fashion',
       description: 'Creative direction and styling for fashion photography campaigns and lookbooks.',
-      image: '📸',
+      image: 'https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?q=80&w=800&auto=format&fit=crop',
       tags: ['Photography', 'Styling', 'Direction'],
       link: '#',
     },
@@ -75,7 +75,7 @@ export default function Portfolio() {
       title: 'Interactive Design System',
       category: 'digital',
       description: 'Comprehensive component library and design tokens for scalable digital products.',
-      image: '⚙️',
+      image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=800&auto=format&fit=crop',
       tags: ['Components', 'Design System', 'Frontend'],
       link: '#',
     },
@@ -168,11 +168,13 @@ export default function Portfolio() {
                 className="h-full group bg-card rounded-xl border border-border overflow-hidden hover:border-accent/40 transition-all duration-300 hover:shadow-xl hover:shadow-accent/20 cursor-pointer"
               >
                 {/* Image Area */}
-                <div className="aspect-video bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center overflow-hidden relative">
-                  <span className="text-6xl transform group-hover:scale-110 transition-transform duration-500">
-                    {project.image}
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="aspect-[4/3] bg-muted overflow-hidden relative">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
                 {/* Content */}
@@ -191,29 +193,11 @@ export default function Portfolio() {
                     {project.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="text-xs px-3 py-1 bg-muted rounded-full text-muted-foreground"
+                        className="text-[10px] uppercase tracking-wider font-bold px-3 py-1 bg-muted rounded-md text-foreground/40"
                       >
                         {tag}
                       </span>
                     ))}
-                  </div>
-
-                  {/* Links */}
-                  <div className="flex gap-3 pt-2 border-t border-border">
-                    <a
-                      href={project.link}
-                      className="flex-1 inline-flex items-center justify-center gap-2 text-sm font-medium text-accent hover:text-primary transition-colors py-2"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      View
-                    </a>
-                    <a
-                      href="#"
-                      className="flex-1 inline-flex items-center justify-center gap-2 text-sm font-medium text-accent hover:text-primary transition-colors py-2"
-                    >
-                      <Github className="w-4 h-4" />
-                      Code
-                    </a>
                   </div>
                 </div>
               </motion.div>

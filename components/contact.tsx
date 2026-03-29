@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Loader2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Loader2, Facebook, Instagram, Linkedin, Github } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Contact() {
@@ -75,7 +75,7 @@ export default function Contact() {
       value: 'Savar, Dhaka, Bangladesh',
       link: '#',
     },
-  ]; 
+  ];
 
   const customEase = [0.76, 0, 0.24, 1] as any;
 
@@ -314,10 +314,19 @@ export default function Contact() {
               <h4 className="font-semibold text-foreground">Connect With Me</h4>
               <div className="flex flex-wrap gap-3">
                 {[
-                  { label: 'LinkedIn', icon: '💼', link: '#' },
-                  { label: 'Instagram', icon: '📸', link: '#' },
-                  { label: 'Dribbble', icon: '🎨', link: '#' },
-                  { label: 'GitHub', icon: '💻', link: '#' },
+                  { label: 'Facebook', icon: <Facebook className="w-4 h-4" />, link: 'https://www.facebook.com/Najmul.Here.7' },
+                  { label: 'Instagram', icon: <Instagram className="w-4 h-4" />, link: 'https://www.instagram.com/najmul_did/' },
+                  { 
+                    label: 'Threads', 
+                    icon: (
+                      <div className="w-4 h-4 relative flex items-center justify-center">
+                        <img src="/threads-logo.png" alt="Threads" className="w-full h-full object-contain" />
+                      </div>
+                    ), 
+                    link: 'https://www.threads.net/@najmul_did' 
+                  },
+                  // { label: 'LinkedIn', icon: <Linkedin className="w-4 h-4" />, link: 'https://linkedin.com/in/najmuldid' },
+                  { label: 'GitHub', icon: <Github className="w-4 h-4" />, link: 'https://github.com/najmuldid' },
                 ].map((social, index) => (
                   <motion.a
                     whileHover={{ y: -3, scale: 1.05 }}

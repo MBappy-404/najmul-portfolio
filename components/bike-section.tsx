@@ -30,20 +30,17 @@ export default function BikeSection() {
     restDelta: 0.001,
   });
 
-  // Parallax layers
-  // The user wants the image STATIC on desktop and PARALLAX on mobile.
-  const imageYRaw = useTransform(smoothProgress, [0, 1], ["-12%", "12%"]);
-  // Use a state-aware y to handle the request: parallax on mobile, fixed on desktop.
-  const imageY = isMobile ? imageYRaw : "0%";
-  
+  // Enable parallax for all devices
+  const imageY = useTransform(smoothProgress, [0, 1], ["-12%", "12%"]);
+
   const overlayOpacity = useTransform(smoothProgress, [0, 0.3, 0.7, 1], [0.8, 0.5, 0.5, 0.8]);
   const textY = useTransform(smoothProgress, [0, 1], ["20%", "-20%"]);
   const decorTextX = useTransform(smoothProgress, [0, 1], ["0%", "-20%"]);
   const statsY = useTransform(smoothProgress, [0, 1], ["40px", "-40px"]);
-  
+
   // Scale effect — subtler, smoother
   const imageScale = useTransform(smoothProgress, [0, 0.5, 1], [1.1, 1.05, 1.1]);
-  
+
   // Floating elements
   const float1Y = useTransform(smoothProgress, [0, 1], [60, -60]);
   const float2Y = useTransform(smoothProgress, [0, 1], [-30, 50]);
@@ -55,18 +52,17 @@ export default function BikeSection() {
     >
       {/* === Layer 1: Background Image === */}
       <motion.div
-        style={{ 
-          y: imageY, 
+        style={{
+          y: imageY,
           scale: imageScale,
-          // Only use will-change-transform if translating to avoid unnecessary overhead
-          willChange: isMobile ? 'transform' : 'auto'
+          willChange: 'transform'
         }}
         className="absolute inset-0"
       >
         <div
           style={{
             position: 'absolute',
-            top: isMobile ? '-15%' : '0',
+            top: isMobile ? '5%' : '0',
             left: 0,
             right: 0,
             bottom: isMobile ? '-15%' : '0',
@@ -90,15 +86,15 @@ export default function BikeSection() {
         className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/40" />
-      <div className="absolute inset-0 bg-black/20" />
+      <div className="absolute inset-0 bg-black/40" />
 
       {/* === Layer 3: Large Scrolling Text === */}
       <motion.div
         style={{ x: decorTextX }}
-        className="absolute bottom-1/4 left-0 right-0 whitespace-nowrap pointer-events-none select-none opacity-[0.05]"
+        className="absolute bottom-1/4 left-0 right-0 translate-y-20 md:translate-y-40  whitespace-nowrap pointer-events-none select-none opacity-40"
       >
-        <span className="text-[20vw] font-black uppercase tracking-tighter text-white leading-none">
-          RIDER · FREEDOM · SOUL · RIDER · FREEDOM ·
+        <span className=" text-[8vw] flex justify-center gap-x-10 md:text-[4vw] font-black uppercase tracking-tighter text-white leading-none">
+          RIDER · FREEDOM · ADVENTURE · EXPLORER · RIDER <span className='hidden md:block'> · BEYOND HORIZONS · JOURNEY · ADVENTURE  · SPIRIT · ADVENTURE</span>
         </span>
       </motion.div>
 
@@ -106,7 +102,7 @@ export default function BikeSection() {
       <div className="relative z-10 h-full flex items-center">
         <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
-            
+
             {/* Text Side */}
             <motion.div
               style={{ y: textY }}
@@ -168,7 +164,7 @@ export default function BikeSection() {
                     transition={{ duration: 1.2, delay: 0.5, ease: customEase }}
                     className="text-base sm:text-lg text-white/70 leading-relaxed font-medium"
                   >
-                    Some people find freedom in art — I find it on two wheels. The open road clears my mind, fuels my creativity, and reminds me to enjoy the little things.
+                    They say riding a bike is the closest you can get to flying while staying on the ground. For me, it&apos;s not just a hobby—it&apos;s a meditation, a way to disconnect from the digital noise and reconnect with my own soul.
                   </motion.p>
                 </div>
 
@@ -180,7 +176,7 @@ export default function BikeSection() {
                   className="flex items-center gap-4 origin-left"
                 >
                   <div className="w-[2px] h-12 bg-white/20 rounded-full" />
-                  <p className="text-white/50 text-sm italic font-serif">
+                  <p className="text-white/80 text-base italic font-serif">
                     &ldquo;The road teaches what no classroom can.&rdquo;
                   </p>
                 </motion.div>
@@ -188,14 +184,15 @@ export default function BikeSection() {
             </motion.div>
 
             {/* Stats Side (Floating Cards) */}
-            <motion.div
+            {/* <motion.div
               style={{ y: statsY }}
               className="md:col-span-4 lg:col-span-5 hidden md:flex flex-col items-end gap-6"
             >
               {[
                 { label: 'Passion', value: 'Riding', icon: '🏍️' },
                 { label: 'Feeling', value: 'Freedom', icon: '🌅' },
-                { label: 'Motto', value: 'Never Stop', icon: '🔥' },
+                // { label: 'Motto', value: 'Never Stop', icon: '🔥' },
+                { label: 'Spirit', value: 'Unstoppable', icon: '⚡' },
               ].map((item, index) => (
                 <motion.div
                   key={index}
@@ -204,20 +201,20 @@ export default function BikeSection() {
                   viewport={{ once: true }}
                   transition={{ duration: 1.2, delay: 0.4 + index * 0.2, ease: customEase }}
                   style={{ y: index === 1 ? float1Y : index === 2 ? float2Y : undefined }}
-                  className="backdrop-blur-xl bg-white/[0.03] border border-white/5 rounded-3xl p-6 min-w-[200px] hover:bg-white/[0.08] transition-all duration-700 group cursor-default"
+                  className="backdrop-blur-xl bg-white/[0.05] border border-white/10 rounded-3xl p-6 min-w-[200px] hover:bg-white/[0.12] transition-all duration-700 group cursor-default"
                 >
                   <div className="flex items-center gap-5">
                     <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center text-2xl group-hover:scale-110 group-hover:bg-accent/20 transition-all duration-500">
                       {item.icon}
                     </div>
                     <div>
-                      <p className="text-[9px] uppercase tracking-[0.3em] text-accent/60 font-black mb-1">{item.label}</p>
+                      <p className="text-[9px] uppercase tracking-[0.3em] text-accent font-black mb-1">{item.label}</p>
                       <p className="text-white font-bold text-lg tracking-tight group-hover:text-accent transition-colors duration-500">{item.value}</p>
                     </div>
                   </div>
                 </motion.div>
               ))}
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </div>
