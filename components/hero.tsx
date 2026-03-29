@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { MoveRight } from 'lucide-react';
@@ -21,9 +21,19 @@ export default function PremiumHero({ isTraveling = false }: { isTraveling?: boo
     restDelta: 0.001
   });
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // 2. Subtle, calculated Parallax Movements
   const imageY = useTransform(smoothProgress, [0, 1], ["0%", "15%"]);
-  const textY = useTransform(smoothProgress, [0, 1], ["0%", "-10%"]);
+  const textYRaw = useTransform(smoothProgress, [0, 1], ["0%", "-10%"]);
+  const textY = isMobile ? "0%" : textYRaw;
 
   // Premium Easing Curve (Cinematic feel)
   const customEase = [0.76, 0, 0.24, 1] as any;
@@ -110,7 +120,7 @@ export default function PremiumHero({ isTraveling = false }: { isTraveling?: boo
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.5, ease: customEase }}
-              className="text-sm md:text-base text-foreground/70 leading-relaxed"
+              className="text-base text-foreground/70 leading-relaxed"
             >
               I believe in the beauty of little things — colors that speak, designs that feel alive, and the kind of work that makes your soul happy. Based in Bangladesh, creating globally.
             </motion.p>
@@ -126,7 +136,7 @@ export default function PremiumHero({ isTraveling = false }: { isTraveling?: boo
             >
               <a
                 href="#about"
-                className="group flex items-center gap-3 sm:gap-4 text-[10px] sm:text-xs font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase"
+                className="group flex items-center gap-3 sm:gap-4  text-sm md:text-base font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase"
               >
                 Know More
                 <span className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all duration-500 ease-out">
@@ -138,7 +148,7 @@ export default function PremiumHero({ isTraveling = false }: { isTraveling?: boo
 
               <a
                 href="#contact"
-                className="text-[10px] sm:text-xs font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase py-2 sm:py-3 border-b border-black/10 hover:border-black transition-colors"
+                className=" text-sm md:text-base font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase py-2 sm:py-3 border-b border-black/10 hover:border-black transition-colors"
               >
                 Hire Me
               </a>
